@@ -70,6 +70,12 @@ yarn-debug.log*
 
 # Project specific ignores
 clientsApi/tmp
+clientsApi/log
+
 productsApi/tmp
+productsApi/log
+
 salesApi/tmp
+salesApi/log
+
 frontend/node_modules
