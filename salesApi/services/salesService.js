@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const CLIENTS_API = 'http://clients_api:3000/clients';
-const PRODUCTS_API = 'http://products_api:3000/products';
+const CLIENTS_API = 'http://clients_api:3000/';
+const PRODUCTS_API = 'http://products_api:3000/';
 
 let sales = [];
 
