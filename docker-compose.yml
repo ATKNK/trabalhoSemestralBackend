@@ -2,15 +2,17 @@ services:
   clients_api:
     build: ./clientsApi
     #command: 'tail -f /dev/null'
-    command: 'rails server -b 0.0.0.0'
+    command: 'bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"'
     volumes:
       - ./clientsApi:/app
+      - bundle_data:/usr/local/bundle
     ports:
       - "3001:3000"
     depends_on:
       - clients_db
     
     environment:
+      RAILS_ENV: development
       DB_HOST: clients_db
       DB_NAME: clients_db
       DB_USER: user
@@ -32,7 +34,7 @@ services:
   products_api:
     build: ./productsApi
     #command: 'tail -f /dev/null'
-    command: 'rails server -b 0.0.0.0'
+    command: 'bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -b 0.0.0.0"'
     volumes:
       - ./productsApi:/app
     ports:
@@ -40,6 +42,7 @@ services:
     depends_on:
       - products_db
     environment:
+      RAILS_ENV: development
       DB_HOST: products_db
       DB_NAME: products_db
       DB_USER: user
@@ -97,3 +100,4 @@ volumes:
   clients_data:
   products_data:
   sales_data:
+  bundle_data:
