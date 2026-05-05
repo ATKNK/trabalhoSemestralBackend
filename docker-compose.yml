@@ -1,0 +1,85 @@
+services:
+  clients_api:
+    build: ./clientsApi
+    ports:
+      - "3001:3000"
+    depends_on:
+      - clients_db
+    
+    environment:
+      DB_HOST: clients_db
+      DB_NAME: clients_db
+      DB_USER: user
+      DB_PASSWORD: password
+
+  clients_db:
+    image: postgres:16
+
+    ports:
+      - "5432:5432"
+
+    environment:
+      POSTGRES_DB: clients_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - clients_data:/var/lib/postgresql/data
+
+  products_api:
+    build: ./productsApi
+    ports:
+      - "3002:3000"
+    depends_on:
+      - products_db
+    environment:
+      DB_HOST: products_db
+      DB_NAME: products_db
+      DB_USER: user
+      DB_PASSWORD: password
+
+  products_db:
+    image: postgres:16
+
+    ports:
+      - "5433:5432"
+
+    environment:
+      POSTGRES_DB: products_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - products_data:/var/lib/postgresql/data
+
+  sales_api:
+    build: ./salesApi
+    ports:
+      - "3003:3000"
+    depends_on:
+      - sales_db
+    environment:
+      DB_HOST: sales_db
+      DB_NAME: sales_db
+      DB_USER: user
+      DB_PASSWORD: password
+  sales_db:
+    image: postgres:16
+
+    ports:
+      - "5434:5432"
+
+    environment:
+      POSTGRES_DB: sales_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - sales_data:/var/lib/postgresql/data
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+
+volumes:
+  clients_data:
+  products_data:
+  sales_data:
