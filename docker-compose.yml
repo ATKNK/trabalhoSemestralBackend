@@ -1,6 +1,9 @@
 services:
   clients_api:
     build: ./clientsApi
+    command: 'tail -f /dev/null'
+    volumes:
+      - ./clientsApi:/app
     ports:
       - "3001:3000"
     depends_on:
@@ -27,6 +30,9 @@ services:
 
   products_api:
     build: ./productsApi
+    command: 'tail -f /dev/null'
+    volumes:
+      - ./productsApi:/app
     ports:
       - "3002:3000"
     depends_on:
@@ -52,6 +58,9 @@ services:
 
   sales_api:
     build: ./salesApi
+    command: 'tail -f /dev/null'
+    volumes:
+      - ./salesApi:/app
     ports:
       - "3003:3000"
     depends_on:
@@ -76,6 +85,9 @@ services:
 
   frontend:
     build: ./frontend
+    command: 'tail -f /dev/null'
+    volumes:
+      - ./frontend:/app
     ports:
       - "3000:3000"
 
