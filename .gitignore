@@ -67,3 +67,9 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
+
+# Project specific ignores
+clientsApi/tmp
+productsApi/tmp
+salesApi/tmp
+frontend/node_modules
