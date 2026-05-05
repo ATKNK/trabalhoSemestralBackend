@@ -1004,3 +1004,4 @@ Started GET "/icon.png" for 172.18.0.1 at 2026-05-05 05:07:20 +0000
   
 ActionController::RoutingError (No route matches [GET] "/icon.png"):
   
+Generating image variants require the image_processing gem. Please add `gem "image_processing", "~> 1.2"` to your Gemfile or set `config.active_storage.variant_processor = :disabled`.
