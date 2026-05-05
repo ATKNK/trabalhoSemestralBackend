@@ -75,6 +75,7 @@ services:
       DB_NAME: sales_db
       DB_USER: user
       DB_PASSWORD: password
+      DATABASE_URL: postgres://user:password@sales_db:5432/sales_db
   sales_db:
     image: postgres:16
 
